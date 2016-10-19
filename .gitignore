@@ -1,0 +1,18 @@
+# Vim #
+#######
+.*.un~
+.*.swp
+
+# Latex #
+#########
+*.log
+*.out
+*.aux
+*.toc
+*.loap
+*.lof
+*.lot
+*.bbl
+*.bcf
+*.blg
+*.run.xml

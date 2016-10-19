@@ -1,0 +1,113 @@
+\documentclass[doublespace]{rackham-thesis}
+% doublespace - double space document
+% proposal - make proposal title page
+
+\usepackage[linktocpage=true]{hyperref}
+\usepackage[style=authoryear-comp,backend=biber]{biblatex}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm, xfrac}
+\usepackage{booktabs}
+\usepackage{lipsum}
+
+\bibliography{references}
+
+
+\begin{document}
+
+\title{Writing a Rackham Thesis: Theories and practice}
+\author{Donald Knuth}
+\degree{Doctor of Philosophy}
+\department{Electrical Engineering}
+\committee{Professor Edsger Dijkstra, Chair\\
+    Professor Alan Turing\\
+    Professor Stephen Cook}
+
+\maketitle
+
+\tableofcontents
+\listoffigures
+\listoftables
+\listofappendices
+
+\chapter{Algorithms}
+
+Shortest paths are wicked cool \parencite{dijkstra}.
+Table~\ref{tab:alg} shows how cool some algorithms are.
+\lipsum[1]
+
+\begin{table}
+    \centering
+    \caption{Cool Algorithms}
+    \begin{tabular}{ll} \toprule
+        Algorithm & Coolness \\ \midrule
+        Shortest Path & Wicked \\
+        Support Vector Machine & Sick \\
+        Fast Fourier Transform & Disgusting \\ \bottomrule
+    \end{tabular}
+    \label{tab:alg}
+\end{table}
+
+Figure~\ref{fig:alg} is a more easily digestible representation of the same data.
+\lipsum[2-3]
+
+\begin{figure}
+    \centering
+    \begin{tabular}{r|ccc}
+        Sick & & x \\
+        Disgusting & & & x \\
+        Wicked & x \\ \hline
+        & Shortest & SVM & FFT \\
+        & Path \\
+    \end{tabular}
+    \caption{Cool Algorithms}
+    \label{fig:alg}
+\end{figure}
+
+
+\chapter{Turing Machines}
+
+On the other hand---according to \textcite{turing}---Turing machines are also cool.
+See Figure~\ref{fig:comp} for a contradiction.
+\lipsum[4]
+
+\begin{figure}
+    \centering
+    {
+        \Huge
+        \begin{equation*}
+            \lambda x . x
+        \end{equation*}
+    }
+    \caption{Downside of Turing machines}
+    \label{fig:comp}
+\end{figure}
+
+
+\section{Reductions}
+
+But what cool reductions \parencite{cook}!
+Table~\ref{tab:red} has the answer.
+\lipsum[5-7]
+
+\begin{table}
+    \centering
+    \caption{The Answer}
+    \begin{tabular}{c} \toprule
+        Cool Reductions \\ \midrule
+        3-SAT \\
+        Gadgets \\ \bottomrule
+    \end{tabular}
+    \label{tab:red}
+\end{table}
+
+\appendix
+
+\chapter{Lorem}
+\lipsum[8-13]
+
+\chapter{Ipsum}
+\lipsum[14]
+
+\printbibliography
+
+\end{document}
