@@ -65,7 +65,9 @@
 
 \renewcommand\maketitle{
   \cleardoublepage
-  \setcounter{page}{-7}
+  \setcounter{page}{1}
+  \pagestyle{empty}
+  \pagenumbering{Alph}
   \@pdfbookmark{Title Page}{Title Page}
   \begin{singlespace}
     \hbox{ }
@@ -112,9 +114,15 @@
 \newif\if@firstnum
 \@firstnumtrue
 
+% This makes it so that in front matter pages are displayed as one higher than they are.
+% This is necessary because the first numbered page has to start as even (ii), but if formatting as two sided, the page actually has to be odd for formatting reasons.
+\newcommand*\rackhamfront[1]{\expandafter\@rackhamfront\csname c@#1\endcsname}
+\newcommand*\@rackhamfront[1]{\@roman{\the\numexpr(#1)+1\relax}}
+
 \newcommand\@startfrontnums{
   \if@firstnum
     \@firstnumfalse
+    \renewcommand{\thepage}{\rackhamfront{page}}
     \setcounter{page}{1}
   \fi
 }
@@ -438,9 +446,3 @@
 % This fixes a warning with hyperref
 % Contributed by Chansoo Lee
 \providecommand*{\toclevel@chap}{0}
-
-% This makes it so that in front matter pages are displayed as one higher than they are.
-% This is necessary because the first numbered page has to start as even (ii), but if formatting as two sided, the page actually has to be odd for formatting reasons.
-\newcommand*\rackhamfront[1]{\expandafter\@rackhamfront\csname c@#1\endcsname}
-\newcommand*\@rackhamfront[1]{\@roman{\the\numexpr(#1)+1\relax}}
-\renewcommand{\thepage}{\rackhamfront{page}}
