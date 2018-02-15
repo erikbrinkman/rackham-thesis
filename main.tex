@@ -19,38 +19,42 @@
 \author{Donald Knuth}
 \degree{Doctor of Philosophy}
 \department{Electrical Engineering}
-\committee{Professor Edsger Dijkstra, Chair\\
-    Professor Alan Turing\\
-    Professor Stephen Cook}
+\committee{
+  Professor Edsger Dijkstra, Chair \\
+  Professor Alan Turing \\
+  Professor Stephen Cook
+}
 
 \maketitle
 \frontispiece{
-	If you optimize everything, you will always be unhappy.\\~\\
+  If you optimize everything, you will always be unhappy.\\[2\baselineskip]
 	---Donald Knuth
 }  % optional
 \copyrightpage  % optional
 \dedication{To Jill}  % optional
 \acknowledgments % optional
 Everything here is part of the acknowledgments.
+\lipsum[1]
 
 \preface % optional
-Everything here is part of the preface
+Everything here is part of the preface.
+\lipsum[1]
 
 \tableofcontents  % mandatory
-\listoffigures  % mandatory if more than one
-\listoftables  % mandatory if more than one
-\listofappendices  % mandatory if more than one
+\listoffigures  % mandatory if more than one figure
+\listoftables  % mandatory if more than one table
+\listofappendices  % mandatory if more than one appendix
 % List of Abbreviations, List of Acronyms, List of Symbols: Optional; must have page number
-\abstract{Edsger Dijkstra}  % mandatory
-This is the abstract
+\abstract  % mandatory
+This is the abstract.
+\lipsum[1]
 
 \chapter{Algorithms}
 
 Shortest paths are wicked cool \parencite{dijkstra}.
 Table~\ref{tab:alg} shows how cool some algorithms are.
-\lipsum[1]
 
-\begin{table}
+\begin{table}[h]
     \centering
     \caption{Cool Algorithms}
     \begin{tabular}{ll} \toprule
@@ -63,9 +67,8 @@ Table~\ref{tab:alg} shows how cool some algorithms are.
 \end{table}
 
 Figure~\ref{fig:alg} is a more easily digestible representation of the same data.
-\lipsum[2-3]
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \begin{tabular}{r|ccc}
         Sick & & x \\

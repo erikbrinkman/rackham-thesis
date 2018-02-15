@@ -26,20 +26,16 @@ Every other option will be passed to the base class `report`, e.g. `twoside`.
 Todo
 ----
 
-- Add support for list of Abbreviations, List of Acronyms, and List of Symbols
+- Fix indentation.
+- Add support for list of Abbreviations, List of Acronyms, and List of Symbols.
 - Support for natbib and straight bibliography instead of just biblatex.
-- Privatize all internal macros with `@`'s.
-- Support printing bib after every section
-- Indent list of appendices to match other lists
+- Support printing bib after every section.
+- Indent list of appendices to match other lists.
 - Fix frontispiece to handle line breaks better.
-- Remove bookmark page number from unnumbered pages.
-	This should be possible by making every page up to TOC check if page number set, and set it to 2 if not.
-- Make sure that in twoside front matter is properly aligned. (\cleardoublepage)
-- Add locale for acknowledgments vs acknowledgements
-- There's a lot of redundancy in the way things are defined, that should be removed.
-- All newpages should probably be clearpage, and there should be no support for two column / cleardoublepage
+- There's a lot of redundancy in the way things are defined.
 - Should front matter sections be environments instead of "start" commands?
-- Ideally force all manditory sections in proper orders and error if not provided, including lists like list of appendices 
+- Ideally force all mandatory sections in proper orders and error if not provided, including lists like list of appendices 
+- Make errors and warning use \ClassWarning and \ClassError
 
 Acknowledgments
 ---------------
