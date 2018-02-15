@@ -3,7 +3,6 @@ Rackham Thesis
 
 A class file for a Rackham (University of Michigan) thesis.
 This file is a modification of [`rac.sty`](http://clasp.engin.umich.edu/pages/current/dissertation-template), which can be found in a number of different locations.
-I was unable to find a license attached to any version, so this is being released under the MIT license, but I will gladly update it if anyone knows of its original license or the intent of previous authors.
 This class file attempts to make it as easy as possible to write a thesis that conforms to the Rackham style guidelines, however users are advised be aware of and follow the [currently published guidelines](http://www.rackham.umich.edu/current-students/dissertation/the-dissertation).
 
 
@@ -11,13 +10,13 @@ Usage
 -----
 
 Simply include this class with `\documentclass{rackham-thesis}`.
-If you've cloned this repository into a subfolder, than you may need to use `\documentclass{rackham-thesis/rackham-thesis}`.
+`biblatex` is enforced over `natbib` to make sure references conform to rackham style.
 
 This class supports two options:
 
 - `doublespace` : Double space the document instead of one and a half spacing.
    As of last observation, either we valid style.
--  `proposal` : Changes the title page to reflect a proposal instead of a thesis.
+- `proposal` : Changes the title page to reflect a proposal instead of a thesis.
 
 Every other option will be passed to the base class `report`, e.g. `twoside`.
 
@@ -27,15 +26,25 @@ Every other option will be passed to the base class `report`, e.g. `twoside`.
 Todo
 ----
 
-- Full reworking of the front matter including acknowledgements, frontispiece, and acronyms.
+- Add support for list of Abbreviations, List of Acronyms, and List of Symbols
 - Support for natbib and straight bibliography instead of just biblatex.
 - Privatize all internal macros with `@`'s.
-
+- Support printing bib after every section
+- Indent list of appendices to match other lists
+- Fix frontispiece to handle line breaks better.
+- Remove bookmark page number from unnumbered pages.
+	This should be possible by making every page up to TOC check if page number set, and set it to 2 if not.
+- Make sure that in twoside front matter is properly aligned. (\cleardoublepage)
+- Add locale for acknowledgments vs acknowledgements
+- There's a lot of redundancy in the way things are defined, that should be removed.
+- All newpages should probably be clearpage, and there should be no support for two column / cleardoublepage
+- Should front matter sections be environments instead of "start" commands?
+- Ideally force all manditory sections in proper orders and error if not provided, including lists like list of appendices 
 
 Acknowledgments
 ---------------
 
-This class file was mostly put together before I edited it.
+This class file was mostly put together before I edited it, I could not find a license attached to any version.
 Most of my changes were to make it more simple to use and conform to standard latex conventions.
 The header from the original `rac.sty` is reproduced here to give credit to everyone who put effort into this file.
 
@@ -55,7 +64,3 @@ The header from the original `rac.sty` is reproduced here to give credit to ever
   - made copyright page cleaner
   - fixed Appendices, Bibliography, margins, title page, frontispiece, bottom-center page numbers, two-side printing,
   - added in-dissertation abstract and abstract that prints separately at the end.
-- Modified Oct. 2016 by Erik Briknman
-  - Simplified format to be more consistent with standard latex style
-  - Changed `loa` to `loap` to remove conflict with list of alorithms
-  - Bibliography only correct with `biblatex`

@@ -8,6 +8,7 @@
 \usepackage{amsmath, amssymb, amsthm, xfrac}
 \usepackage{booktabs}
 \usepackage{lipsum}
+\usepackage{flafter} % prevents floats before section titles
 
 \bibliography{references}
 
@@ -23,11 +24,25 @@
     Professor Stephen Cook}
 
 \maketitle
+\frontispiece{
+	If you optimize everything, you will always be unhappy.\\~\\
+	---Donald Knuth
+}  % optional
+\copyrightpage  % optional
+\dedication{To Jill}  % optional
+\acknowledgments % optional
+Everything here is part of the acknowledgments.
 
-\tableofcontents
-\listoffigures
-\listoftables
-\listofappendices
+\preface % optional
+Everything here is part of the preface
+
+\tableofcontents  % mandatory
+\listoffigures  % mandatory if more than one
+\listoftables  % mandatory if more than one
+\listofappendices  % mandatory if more than one
+% List of Abbreviations, List of Acronyms, List of Symbols: Optional; must have page number
+\abstract{Edsger Dijkstra}  % mandatory
+This is the abstract
 
 \chapter{Algorithms}
 

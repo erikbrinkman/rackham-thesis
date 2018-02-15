@@ -18,13 +18,9 @@
 %          margins, title page, frontispiece, bottom-center page numbers,
 %          two-side printing, added in-dissertation abstract and abstract
 %          that prints separately at the end.
-% Modified Oct. 2016 by Erik Briknman
-%          Simplified format to be more consistent with standard latex style.
-%          Changed loa to loap to remove conflict with list of alorithms
-%          Bibliography only correct with
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{rackham-thesis}[2016/10/05 Rackham Thesis Class]
+\ProvidesClass{rackham-thesis}[2018/02/15 Rackham Thesis Class]
 
 %-- Package options --
 \newcommand\@setspacing\onehalfspacing
@@ -119,6 +115,7 @@
   \parbox{5.3in}{\@committee}
  \end{singlespace}
 
+ % FIXME This is set in both thesis and propose title, but it should be just set as we always want it to be set
  % Set things for next page
  \setcounter{page}{1}   % -- begins with "ii"
  \pagestyle{chappage}   % -- numbers at bottom
@@ -159,51 +156,67 @@
  \renewcommand{\thepage}{\roman{page}}   % roman numeral
 }
 
-\def\frontispiece{
+\def\frontispiece#1{
  \ttlpg
+ \@pdfbookmark{Frontispiece}{Frontispiece}
  \hbox{ }
+ \vertadjust
+ \vfill
+ \begin{center}
+	 \begin{singlespace}
+		 #1
+	 \end{singlespace}
+ \end{center}
+ \vfill
  \if@twoside \clearpage\hbox{}\thispagestyle{empty} \fi
  \twoinmar
+ \setcounter{page}{1}
 }
 
-\def\copyrightpage#1{
+\def\copyrightpage{
  \ttlpg
+ \@pdfbookmark{Copyright}{Copyright}
  \hbox{ }
  \vertadjust
  \vfill
  \begin{center}
   \begin{singlespace}
-   \underline{\copyright\hspace{0.2in}{#1}\hspace{0.2in}\number\year}\\
+   \underline{\copyright\hspace{0.2in}{\@author}\hspace{0.2in}\number\year}\\
    \vspace{0.1in}All Rights Reserved
   \end{singlespace}
  \end{center}
  \vfill
+ \setcounter{page}{1}
 }
 
-\def\dedicationpage#1{
+\def\dedication#1{
  \newpage
- \addcontentsline{toc}{chapter}{DEDICATION}
+ \@phantomsection
+ \addcontentsline{toc}{chapter}{\@texorpdfstring{DEDICATION}{Dedication}}
  \hbox{ }
  \vertadjust
  \vfill
  \begin{center}
-  #1
+	 \textit{#1}
  \end{center}
  \vfill
 }
 
-\def\startacknowledgementspage{
+\def\acknowledgments{
  \newpage
- \addcontentsline{toc}{chapter}{ACKNOWLEDGEMENTS}
+ \@phantomsection
+ \addcontentsline{toc}{chapter}{\@texorpdfstring{ACKNOWLEDGMENTS}{Acknowledgments}}
  \hbox{ }
  \twoinmar
  \centerline{\large\bf ACKNOWLEDGEMENTS}
  \vspace{0.7in}
 }
+\let\acknowledgements\acknowledgments
 
-\def\startprefacepage{
+\def\preface{
  \newpage
- \addcontentsline{toc}{chapter}{PREFACE}
+ \@phantomsection
+ \addcontentsline{toc}{chapter}{\@texorpdfstring{PREFACE}{Preface}}
  \hbox{ }
  \twoinmar
  \centerline{\large\bf PREFACE}
@@ -251,66 +264,28 @@
  \end{singlespace} 
 }
 
-\renewcommand\listoffigures{%
- \newpage
+% Various lists
+
+\newcommand{\@list}[3]{
+ \cleardoublepage
  \@phantomsection
- \addcontentsline{toc}{chapter}{\@texorpdfstring{LIST OF FIGURES}{List of Figures}}
+ \addcontentsline{toc}{chapter}{\@texorpdfstring{\uppercase{List of #1}}{List of #1}}
  \@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn\fi
  \hbox{ }
  \twoinmar
- \centerline{\large\bf LIST OF FIGURES}
- \vspace{0.7in}
+ \centerline{\large\bf\uppercase{List of #1}}
+ \vspace{0.7in}  % FIXME Make this length
  \begin{singlespace}
-  \@starttoc{lof}\if@restonecol\twocolumn\fi
-  \addtocontents{lof}{\noindent\underline{\bf Figure}\hfill\rm\protect\newline}
+   \@starttoc{#3}\if@restonecol\twocolumn\fi
+   \addtocontents{#3}{\noindent\underline{\bf #2}\hfill\rm\protect\newline}
  \end{singlespace}
 }
 
-\renewcommand\listoftables{%
- \newpage
- \@phantomsection
- \addcontentsline{toc}{chapter}{\@texorpdfstring{LIST OF TABLES}{List of Tables}}
- \@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn\fi
- \hbox{ }
- \twoinmar
- \centerline{\large\bf LIST OF TABLES}
- \vspace{0.7in}
- \begin{singlespace}
-  \@starttoc{lot}\if@restonecol\twocolumn\fi
-  \addtocontents{lot}{\noindent\underline{\bf Table}\hfill\rm\protect\newline}
- \end{singlespace}
-}
+\renewcommand{\listoffigures}{\@list{Figures}{Figure}{lof}}
+\renewcommand{\listoftables}{\@list{Tables}{Table}{lot}}
+\newcommand{\listofappendices}{\@list{Appendices}{Appendix}{loap}}
 
-\newcommand\listofmaps{%
- \newpage
- \@phantomsection
- \addcontentsline{toc}{chapter}{\@texorpdfstring{LIST OF MAPS}{List of Maps}}
- \@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn\fi
- \hbox{ }
- \twoinmar
- \centerline{\large\bf LIST OF MAPS}
- \vspace{0.7in}
- \begin{singlespace}
-  \@starttoc{lom}\if@restonecol\twocolumn\fi
-  \addtocontents{lom}{\noindent\underline{\bf Map}\hfill\rm\protect\newline}
- \end{singlespace}
-}
-
-\newcommand\listofappendices{%
- \newpage
- \@phantomsection
- \addcontentsline{toc}{chapter}{\@texorpdfstring{LIST OF APPENDICES}{List of Appendicies}}
- \@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn\fi
- \hbox{ }
- \twoinmar
- \centerline{\large\bf LIST OF APPENDICES}
- \vspace{0.7in}
- \begin{singlespace}
-  \@starttoc{loap}\if@restonecol\twocolumn\fi
-  \addtocontents{loap}{\noindent\underline{\bf Appendix}\hfill\rm\protect\newline}
- \end{singlespace}
-}
-
+% FIXME Update
 \newcommand\listofabbreviations{% Uses the acronym package -jg
  \newpage
  \@phantomsection
@@ -327,25 +302,25 @@
  \end{singlespace} 
 }
 
-\def\startabstractpage#1#2#3{% This formats the optional in-dissertation abstract - jg
+\def\abstract#1{
  \newpage
  \@phantomsection
  \addcontentsline{toc}{chapter}{\@texorpdfstring{ABSTRACT}{Abstract}}
  \@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn\fi
  \hbox{ }
- \twoinmar
  \centerline{\large\bf ABSTRACT}
  \vspace{0.25in}
  \begin{center}
   \begin{singlespace}
-   #1 \\
+   \@title \\
   \end{singlespace}
    by \\
-   #2 \\
+   \@author \\
  \end{center}
  \vspace{0.4in}
- \noindent #3
- \vspace{0.25in}\\
+ \noindent Chair: #1 \vspace{0.1in}
+
+ % intentionally left blank for paragraph break
 }
 
 %-- Start chapters --
@@ -482,7 +457,6 @@
      \typeout{\@chapapp\space\theappendix.}
      \hbox{}
      \if@twoside \ifodd\c@page \else\thispagestyle{empty} \clearpage\hbox{}\fi\fi
-     \addtocontents{loap}{\hbox{ }}
      \addcontentsline{loap}{appendix}{\protect\numberline{\theappendix.}{\ignorespaces\rm ##1}}
      \hbox{ }
      \twoinmar
@@ -532,21 +506,6 @@
     \fi
 }
 
-\def\startextabstractpage#1#2#3{% This formats an external Abstract that can be printed at the end of the document. Comment it out in thesis.tex when not needed. - jg
- \ttlpg
- \@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn\fi
- \hbox{ }
- \centerline{\large\bf ABSTRACT}
- \vspace{0.25in}
- \begin{center}
-  \begin{singlespace}
-   #1 \\
-  \end{singlespace}
-   by \\
-   #2 \\
- \end{center}
- \vspace{0.4in}
- \noindent #3
- \vspace{0.25in}\\
- \pagestyle{empty}
-}
+% This fixes a warning with hyperref
+% Contributed by Chansoo Lee
+\providecommand*{\toclevel@chap}{0}
