@@ -6,6 +6,12 @@ This file is a modification of [`rac.sty`](http://clasp.engin.umich.edu/pages/cu
 This class file attempts to make it as easy as possible to write a thesis that conforms to the Rackham style guidelines, however users are advised be aware of and follow the [currently published guidelines](http://www.rackham.umich.edu/current-students/dissertation/the-dissertation).
 
 
+Notes
+-----
+
+- This currently only supports using `biblatex` and is incompatible with `natbib`.
+- There is an unknown clash with the `enumitem` package.
+
 Usage
 -----
 
