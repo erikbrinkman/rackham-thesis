@@ -37,7 +37,6 @@ Todo
 - Support for natbib and straight bibliography instead of just biblatex.
 - Support printing bib after every section.
 - Indent list of appendices to match other lists.
-- Fix frontispiece to handle line breaks better.
 - There's a lot of redundancy in the way things are defined.
 - Should front matter sections be environments instead of "start" commands?
 - Ideally force all mandatory sections in proper orders and error if not provided, including lists like list of appendices 

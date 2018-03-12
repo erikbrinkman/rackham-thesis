@@ -32,7 +32,8 @@
 \ProcessOptions\relax
 
 \LoadClass[12pt]{report}
-\RequirePackage{setspace}
+\RequirePackage{setspace}  % for spacing
+\RequirePackage{xstring}  % for testing string equality
 
 \@setspacing
 
@@ -142,17 +143,21 @@
   \twoinmar
 }
 
-\newcommand\copyrightpage{
+\newcommand\identifierpage[3][]{
   \cleardoublepage
-  \@pdfbookmark{Copyright}{Copyright}
+  \@pdfbookmark{Identifier}{Identifier}
   \hbox{ }
   \vertadjust
   \vfill
   \begin{center}
-    \begin{singlespace}
-      \underline{\copyright\hspace{0.2in}{\@author}\hspace{0.2in}\number\year}\\
-      \vspace{0.1in}All Rights Reserved
-    \end{singlespace}
+    \@author\\
+    #2\\
+    ORCID iD: #3%
+    \IfStrEq{#1}{copyright}{
+      \\[\baselineskip] \copyright\ \@author\ \number\year
+    }{
+      \IfStrEq{#1}{}{}{\ClassError{rackham-thesis}{Identifier page must have optional "copyright" or nothing, got "#1"}{}}
+    }
   \end{center}
   \vfill
 }
