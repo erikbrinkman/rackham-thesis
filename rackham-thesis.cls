@@ -35,6 +35,7 @@
 \RequirePackage{setspace}  % for spacing
 \RequirePackage{xstring}  % for testing string equality
 
+
 \@setspacing
 
 % Define placeholder commands if hyperref not imported
@@ -427,6 +428,7 @@
 \newcommand\@modifybib{
   \ifdefined\printbibliography
     \let\@oldprintbibliography\printbibliography
+    \setlength\bibitemsep{2\itemsep}
     \renewcommand{\printbibliography}{%
       \let\chapter\@oldchapter
       \cleardoublepage
