@@ -96,7 +96,7 @@
   of the requirements for the degree of \\
   \@degree \\
   (\@department) \\
-  in The University of Michigan
+  in the University of Michigan
 }
 
 % Define new maketitle to create title page
