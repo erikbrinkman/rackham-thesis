@@ -126,6 +126,7 @@
     \@firstnumfalse
     \renewcommand{\thepage}{\rackhamfront{page}}
     \setcounter{page}{1}
+    \pagestyle{plain}
   \fi
 }
 
