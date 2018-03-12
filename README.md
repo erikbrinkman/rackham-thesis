@@ -32,6 +32,7 @@ Every other option will be passed to the base class `report`, e.g. `twoside`.
 Todo
 ----
 
+- Should orcid and email be set with frontmatter and just pulled with identifier page?
 - Fix indentation.
 - Add support for list of Abbreviations, List of Acronyms, and List of Symbols.
 - Support for natbib and straight bibliography instead of just biblatex.
