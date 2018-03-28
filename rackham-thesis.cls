@@ -35,7 +35,6 @@
 \RequirePackage{setspace}  % for spacing
 \RequirePackage{xstring}  % for testing string equality
 
-
 \@setspacing
 
 % Define placeholder commands if hyperref not imported
@@ -43,6 +42,7 @@
 \newcommand\@phantomsection{\ifdefined\phantomsection\phantomsection\fi}
 \newcommand\@texorpdfstring[2]{\ifdefined\texorpdfstring\texorpdfstring{#1}{#2}\else#1\fi}
 
+% FIXME Switch to geometry package
 %-- Margins --
 \if@twoside \oddsidemargin 0.5in \evensidemargin 0in \marginparwidth .6in \textheight=8.95in
 \else \oddsidemargin 0.5in \marginparwidth .9in \textheight=9.0in\fi% left margin=1in + oddsidemargin, marginparwidth: text box for margin notes
@@ -80,7 +80,7 @@
       \end{onehalfspacing}
       \vfill
       \@titlecommand \\
-      \@date \\
+      \the\year \\
     \end{center}
     \vfill
     Doctoral Committee: \\[2ex]
@@ -348,6 +348,7 @@
 \def\subsubsection{\@startsection{subsubsection}{3}{\z@}{3.25ex plus
  1ex minus .2ex}{1.5ex plus .2ex}{\normalsize\bf}}
 
+% FIXME What are tese doing, can we remove them?
 \long\def\@caption#1[#2]#3{%
  \addtocontents{\csname ext@#1\endcsname}{\hbox{ }}
  \addcontentsline{\csname ext@#1\endcsname}{#1}{\protect\numberline{\csname
