@@ -1,6 +1,12 @@
 Rackham Thesis
 ==============
 
+> [!WARNING]
+> **Deprecated.** This template is no longer maintained. Use the actively
+> maintained [UMich Dissertation Template](https://github.com/meluso/UMich_Dissertation_Template)
+> instead, which tracks the current Rackham guidelines and is available
+> [on Overleaf](https://www.overleaf.com/latex/templates/university-of-michigan-dissertation-template-unofficial/tpnjzndnrzmf).
+
 A class file for a Rackham (University of Michigan) thesis.
 This file is a modification of [`rac.sty`](http://clasp.engin.umich.edu/pages/current/dissertation-template), which can be found in a number of different locations.
 This class file attempts to make it as easy as possible to write a thesis that conforms to the Rackham style guidelines, however users are advised be aware of and follow the [currently published guidelines](http://www.rackham.umich.edu/current-students/dissertation/the-dissertation).
